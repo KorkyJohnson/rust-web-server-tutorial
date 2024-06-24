@@ -1,5 +1,6 @@
 use std::{convert::TryFrom, time::SystemTime};
 
+use super::{dog_model::Dog, owner_model::Owner};
 use chrono::Utc;
 use mongodb::bson::{oid::ObjectId, DateTime};
 use serde::{Deserialize, Serialize};
@@ -31,7 +32,7 @@ pub struct FullBooking {
     pub cancelled: bool,
     }
 
-impl TryFrom<BookRequest> for Booking {
+impl TryFrom<BookingRequest> for Booking {
     type Error = Box<dyn std::error::Error>;
 
     fn try_from(item: BookingRequest) -> Result<Self, Self::Error> {
